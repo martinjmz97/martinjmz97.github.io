@@ -36,7 +36,6 @@ h2 { font-size: 1.6rem; margin: 72px 0 20px; letter-spacing: -0.015em; display: 
 h3 { font-size: 1.12rem; margin: 6px 0 8px; letter-spacing: -0.005em; }
 p { margin: 0 0 14px; }
 code { background: var(--chip); padding: 1px 6px; border-radius: 5px; font-size: .9em; }
-.idx { font: 600 .8rem ui-monospace, Menlo, monospace; color: var(--accent); }
 .muted { color: var(--muted); }
 .small { font-size: .85rem; }
 
