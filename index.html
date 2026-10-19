@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Martín Jiménez | Portfolio</title>
+  <meta name="description" content="Quantitative research and AI-driven business automation. Case studies and demos.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="#top">Martín Jiménez</a>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#demo">Demo</a>
+        <a href="#approach">Approach</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <p class="eyebrow">Open to remote roles</p>
+      <h1>I build automation systems and test quantitative ideas until they break.</h1>
+      <p class="lead">
+        Two kinds of work: production AI automation for a real small business, and
+        quantitative research where a well-documented null result counts as a result.
+        Python, TypeScript, PostgreSQL, LLM tool use.
+      </p>
+      <p class="links">
+        <a class="btn primary" href="#projects">See projects</a>
+        <a class="btn" href="https://github.com/martinjmz97">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/martinjmz">LinkedIn</a>
+      </p>
+    </section>
+
+    <section class="wrap" id="projects">
+      <h2>Projects</h2>
+
+      <article class="card">
+        <div class="meta"><span class="tag">In production</span><span class="tag">Automation</span></div>
+        <h3>Customer-service automation and CRM for a used-vehicle dealership</h3>
+        <p>
+          End-to-end system for a small dealership in the Dominican Republic: an LLM-powered WhatsApp
+          assistant that answers customer questions from live inventory, a private admin CRM, a public
+          inventory website, and an Instagram agent. Anything the assistant cannot resolve is escalated to the owner.
+        </p>
+        <ul>
+          <li><b>WhatsApp assistant:</b> Meta webhook, FastAPI, Claude with tool use (inventory search, spec lookup, vehicle history report, photo sending, escalation). Specs come from search, not from the model's memory.</li>
+          <li><b>Scheduled work:</b> staggered follow-ups after 24 h, 72 h and 7 days of silence, appointment reminders, hourly inventory sync from a spreadsheet.</li>
+          <li><b>Admin CRM:</b> React + Vite, responsive, reachable remotely over a private mesh VPN with HTTPS.</li>
+          <li><b>Public website:</b> Next.js on Vercel, with filters, financing request and loan calculator, SEO and analytics.</li>
+          <li><b>Content pipeline:</b> FFmpeg and Whisper for automatic video editing, captions and social posts.</li>
+          <li><b>Instagram agent:</b> comment moderation and DM handling, with hand-off to WhatsApp.</li>
+          <li><b>Guardrails:</b> message de-duplication, spam and vendor detection, image understanding for documents, owner escalation.</li>
+        </ul>
+        <p class="stack">Python · FastAPI · PostgreSQL · Docker · Claude API · WhatsApp Business · React · Next.js · FFmpeg · Whisper</p>
+        <p class="note">Customer data and credentials are private. The demo below uses synthetic data.</p>
+        <a class="btn" href="#demo">Try the demo</a>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag">Research</span><span class="tag">Market microstructure</span></div>
+        <h3>Market making on a prediction-market order book</h3>
+        <p>
+          Implementing and calibrating a quoting model for Polymarket's central limit order book, starting with
+          traditional sports markets. The model is an Avellaneda–Stoikov-style framework adapted to a binary payoff,
+          working in logit space. With about $100 of capital the dollar PnL is statistical noise by design, so the
+          deliverable is the model, its calibration against live data, and the risk controls.
+        </p>
+        <ul>
+          <li><b>Where equity analogies break:</b> jumps near resolution and bounded prices change the inventory and quoting math.</li>
+          <li><b>Scoping from data:</b> esports were excluded after live data showed prices moving roughly 10–30× faster per minute than baseball markets, so the reaction parameters did not transfer.</li>
+          <li><b>Research log:</b> API and fee research, every decision dated with its reason, claims backed by a derivation, a citation or a test.</li>
+          <li><b>Hard rules:</b> a backtest on a resolved market before risking capital; no live order without explicit confirmation.</li>
+          <li><b>Earlier result:</b> an event study of public figures' posts against market prices found no capturable signal; it was closed and kept as a reference.</li>
+        </ul>
+        <p class="stack">Python · Stochastic control · Backtesting · pytest · CLOB API</p>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag">Research</span><span class="tag">Crypto</span></div>
+        <h3>Systematic crypto strategy research under walk-forward validation</h3>
+        <p>
+          A pipeline for downloading, testing and falsifying strategies on perpetual futures, with fees and slippage
+          in every backtest and out-of-sample reporting by default. Most ideas did not survive, and that is documented.
+        </p>
+        <table>
+          <thead><tr><th>Strategy</th><th>Finding</th></tr></thead>
+          <tbody>
+            <tr><td>Cointegrated pairs</td><td>55 pairs significant in the screen, but half-lives above 240 h and high gap risk. Paused.</td></tr>
+            <tr><td>Basis / funding</td><td>Sharpe 4.5 in backtest, but only ~3% nominal return (~9% at 3× leverage). Sound, low return.</td></tr>
+            <tr><td>Lead–lag (BTC → alts)</td><td>0 of 10 alts with a significant 5-minute lead–lag. Already arbitraged. Discarded.</td></tr>
+            <tr><td>Cluster reversion / momentum</td><td>No edge after costs; the residual behaved as noise. Discarded.</td></tr>
+            <tr><td>Options / volatility</td><td>Implied-vol mispricing on Deribit. Active.</td></tr>
+          </tbody>
+        </table>
+        <p class="stack">Python 3.12 · polars · numba · statsmodels · pytest</p>
+        <p class="note">Rules I hold myself to: one strategy at a time, no more than about five parameters, and no look-ahead.</p>
+      </article>
+
+      <article class="card">
+        <div class="meta"><span class="tag">Analytics</span><span class="tag">Tool</span></div>
+        <h3>Poker bankroll and edge tracker</h3>
+        <p>
+          A local Streamlit application that parses hand histories into polars frames and reports session and
+          cumulative statistics, an equity curve with 95% confidence bands, risk of ruin
+          (<code>RoR = exp(−2·μ·B/σ²)</code>), fractional Kelly sizing, and a leak detector against baseline ranges.
+        </p>
+        <p class="stack">Python · polars · numba · Streamlit · plotly</p>
+      </article>
+    </section>
+
+    <section class="wrap" id="demo">
+      <h2>Demo: the WhatsApp assistant</h2>
+      <p class="muted">
+        A scripted replay of how the assistant handles a conversation. All data here is synthetic.
+        Tool calls are shown so you can see what the model does behind the reply.
+      </p>
+      <div class="demo">
+        <div class="chat" id="chat" aria-live="polite"></div>
+        <div class="controls">
+          <button class="btn primary" id="step">Next message</button>
+          <button class="btn" id="reset">Restart</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="approach">
+      <h2>How I work</h2>
+      <div class="grid">
+        <div><h3>Skeptical by default</h3><p>A suspiciously good backtest is a methodology bug until proven otherwise: look-ahead, overfitting, fees and slippage.</p></div>
+        <div><h3>Assumptions stated</h3><p>Every number comes with the data, window and conditions it is valid under, and what would break it.</p></div>
+        <div><h3>Tests where it matters</h3><p>Math, fee calculations, position sizing and anything that touches money get tests before they are called done.</p></div>
+        <div><h3>Humans in the loop</h3><p>Automation answers what it can verify and escalates the rest. Nothing irreversible runs without confirmation.</p></div>
+      </div>
+    </section>
+
+    <section class="wrap" id="contact">
+      <h2>Contact</h2>
+      <p>Open to remote work in automation engineering, applied AI and quantitative research.</p>
+      <p class="links">
+        <a class="btn primary" href="https://www.linkedin.com/in/martinjmz">LinkedIn</a>
+        <a class="btn" href="https://github.com/martinjmz97">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Source code for these projects is private. Details available on request.</footer>
+  <script src="script.js"></script>
+</body>
+</html>
