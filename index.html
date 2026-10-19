@@ -83,22 +83,22 @@
       </article>
 
       <article class="card">
-        <div class="meta"><span class="tag">Research</span><span class="tag">Modeling</span></div>
+        <div class="meta"><span class="tag">Research</span><span class="tag">Modeling</span><span class="tag">Open source</span></div>
         <h3>Market making on a prediction-market order book</h3>
         <p>
-          Implementing and calibrating a quoting model for Polymarket's order book, starting with traditional sports
-          markets. It is an Avellaneda–Stoikov-style framework adapted to a binary payoff, working in logit space.
-          With about $100 of capital the dollar PnL is noise by design, so the deliverable is the model, its
-          calibration against live data and the risk controls.
+          Does a quoting model adapted to a binary payoff earn an edge on Polymarket's order book? I tested it with
+          simulated quoting against the live book and against recorded tape. It does not, and the repository
+          documents why.
         </p>
         <ul>
-          <li><b>Where equity analogies break:</b> jumps near resolution and bounded prices change the inventory and quoting math.</li>
-          <li><b>Scoping from data:</b> esports were excluded after live data showed prices moving roughly 10–30× faster per minute than baseball markets, so the reaction parameters did not transfer.</li>
-          <li><b>Earlier result:</b> an event study of public figures' posts against market prices found no capturable signal; it was closed and kept as a reference.</li>
-          <li><b>Hard rules:</b> a backtest on a resolved market before risking capital; no live order without explicit confirmation.</li>
+          <li><b>Result:</b> with risk protections, across 50 events grouped by event, mean PnL was negative in every run (t ≈ −3.4).</li>
+          <li><b>What I tried:</b> wider spreads, a toxic-flow detector calibrated on 48,446 real trades, and skewing quotes with the flow. None fixed it; the skew made it 32% worse.</li>
+          <li><b>Why:</b> a binary market converges to a known outcome, so inventory that is not closed in time pays the full move. The equity market-making analogy breaks here.</li>
+          <li><b>Earlier work:</b> an event study of public figures' posts and supply-chain theses against market prices, also closed with a null result.</li>
         </ul>
-        <p class="shows"><b>Shows:</b> stochastic modeling, calibration on real data, risk limits, a dated decision log.</p>
-        <p class="stack">Python · Stochastic control · Backtesting · pytest · CLOB API</p>
+        <p class="shows"><b>Shows:</b> stochastic modeling, hypothesis testing with correct units of analysis, data ingestion, 140 tests, and reporting a negative result.</p>
+        <p class="stack">Python · polars · SciPy · statsmodels · pytest · Polymarket CLOB API</p>
+        <a class="btn" href="https://github.com/martinjmz97/quant-research">View on GitHub</a>
       </article>
 
       <article class="card">
