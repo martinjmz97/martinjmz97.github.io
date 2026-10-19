@@ -56,7 +56,8 @@ function addMessage(m) {
   el.className = `msg ${m.role}`;
   el.textContent = m.text;
   chat.appendChild(el);
-  el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  // scroll inside the chat box only; scrolling the page would jump to the demo on load
+  chat.scrollTop = chat.scrollHeight;
 }
 
 // One click reveals a customer message together with the tool calls and reply that follow it.
