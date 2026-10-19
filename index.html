@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Martín Jiménez | Data Science &amp; Analytics</title>
-  <meta name="description" content="Martín Jiménez: data science and analytics. Quantitative research with honest validation, and production LLM automation.">
+  <meta name="description" content="Martín Jiménez: data science and analytics. Quantitative research with documented negative results, and production LLM automation.">
   <meta property="og:title" content="Martín Jiménez | Data Science &amp; Analytics">
-  <meta property="og:description" content="Quantitative research with honest validation, and production LLM automation.">
+  <meta property="og:description" content="Quantitative research with documented negative results, and production LLM automation.">
   <meta property="og:type" content="website">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231f4fd8'/%3E%3Ctext x='16' y='22' font-size='17' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EMJ%3C/text%3E%3C/svg%3E">
@@ -33,7 +33,7 @@
       <h1>Data science and analytics, with a habit of trying to prove myself wrong.</h1>
       <p class="lead">
         I build data pipelines, statistical models and LLM-powered automation. My research projects
-        are validated out of sample, include costs, and report what failed. My production work serves a
+        charge trading costs and report what failed. My production work serves a
         real business every day.
       </p>
       <div class="roles" aria-label="Target roles">
@@ -52,7 +52,7 @@
         <div><h3>Analysis &amp; statistics</h3><p class="chips"><span>Python</span><span>polars</span><span>NumPy</span><span>SciPy</span><span>statsmodels</span><span>Cointegration tests</span><span>Event studies</span><span>Backtesting</span><span>Walk-forward validation</span></p></div>
         <div><h3>Data &amp; engineering</h3><p class="chips"><span>SQL</span><span>PostgreSQL</span><span>FastAPI</span><span>Docker</span><span>numba</span><span>pytest</span><span>Scheduled pipelines</span></p></div>
         <div><h3>AI &amp; LLM systems</h3><p class="chips"><span>LLM tool use</span><span>Claude API</span><span>Whisper (speech-to-text)</span><span>Prompt design</span><span>Escalation &amp; guardrails</span></p></div>
-        <div><h3>Visualization &amp; apps</h3><p class="chips"><span>Streamlit</span><span>plotly</span><span>matplotlib</span><span>React</span><span>Next.js</span><span>GA4 / Search Console</span></p></div>
+        <div><h3>Applications &amp; web</h3><p class="chips"><span>React</span><span>Next.js</span><span>GA4 / Search Console</span></p></div>
       </div>
     </section>
 
@@ -60,26 +60,28 @@
       <h2>Projects</h2>
 
       <article class="card">
-        <div class="meta"><span class="tag">Research</span><span class="tag">Statistics</span></div>
-        <h3>Systematic crypto strategy research under walk-forward validation</h3>
+        <div class="meta"><span class="tag">Research</span><span class="tag">Statistics</span><span class="tag">Open source</span></div>
+        <h3>Systematic crypto strategy research</h3>
         <p>
-          A pipeline for downloading, testing and falsifying strategies on perpetual futures. Every backtest includes
-          fees and slippage and reports out-of-sample results. Most ideas did not survive, and that is documented.
+          A pipeline for downloading data, backtesting and falsifying strategies on perpetual futures and options.
+          Backtests charge trading fees, and strategies with fitted parameters get a walk-forward split.
+          Most ideas did not survive, and that is documented.
         </p>
         <div class="table-wrap">
           <table>
             <thead><tr><th>Strategy</th><th>Finding</th></tr></thead>
             <tbody>
-              <tr><td>Cointegrated pairs</td><td>55 pairs significant in the screen, but half-lives above 240 h and high gap risk. Paused.</td></tr>
-              <tr><td>Basis / funding</td><td>Sharpe 4.5 in backtest, but only ~3% nominal return (~9% at 3× leverage). Sound, low return.</td></tr>
-              <tr><td>Lead–lag (BTC → alts)</td><td>0 of 10 alts with a significant 5-minute lead–lag. Already arbitraged. Discarded.</td></tr>
-              <tr><td>Cluster reversion / momentum</td><td>No edge after costs; the residual behaved as noise. Discarded.</td></tr>
-              <tr><td>Options / volatility</td><td>Implied-vol mispricing on Deribit. Active.</td></tr>
+              <tr><td>Cointegrated pairs</td><td>55 of 190 pairs significant in the screen, but every half-life is above 240 h. Too slow to trade.</td></tr>
+              <tr><td>Basis / funding</td><td>20 symbols, mean Sharpe 5.3 but only 4.8% annualized (2.3% out of sample, 17 of 20 symbols positive). Sound, low return.</td></tr>
+              <tr><td>Lead–lag (BTC → alts)</td><td>No significant lead–lag for any of 10 alts on 5-minute data. Discarded.</td></tr>
+              <tr><td>Cluster reversion</td><td>0 of 10 symbols profitable after costs. Discarded.</td></tr>
+              <tr><td>Variance risk premium</td><td>Simplified short-straddle proxy on Deribit: Sharpe 1.9 (BTC), 0.6 (ETH). Exploratory.</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="shows"><b>Shows:</b> experiment design, avoiding look-ahead bias and overfitting (at most about five parameters), honest reporting of negative results.</p>
-        <p class="stack">Python 3.12 · polars · numba · statsmodels · SciPy · pytest</p>
+        <p class="shows"><b>Shows:</b> experiment design, walk-forward validation, stating caveats (full-sample screen, no multiple-testing correction, simplified P&amp;L), honest reporting of negative results.</p>
+        <p class="stack">Python · polars · numba · statsmodels · SciPy</p>
+        <a class="btn" href="https://github.com/martinjmz97/crypto-quant-research">View on GitHub</a>
       </article>
 
       <article class="card">
@@ -123,17 +125,6 @@
         <a class="btn" href="#demo">Try the demo</a>
       </article>
 
-      <article class="card">
-        <div class="meta"><span class="tag">Analytics</span><span class="tag">Tool</span></div>
-        <h3>Poker bankroll and edge tracker</h3>
-        <p>
-          A local Streamlit application that parses hand histories into polars frames and reports session and
-          cumulative statistics, an equity curve with 95% confidence bands, risk of ruin
-          (<code>RoR = exp(−2·μ·B/σ²)</code>), fractional Kelly sizing and a leak detector against baseline ranges.
-        </p>
-        <p class="shows"><b>Shows:</b> parsing messy text into tables, confidence intervals, simulation, an interactive dashboard.</p>
-        <p class="stack">Python · polars · numba · Streamlit · plotly</p>
-      </article>
     </section>
 
     <section class="wrap" id="demo">
@@ -165,7 +156,7 @@
         <div>
           <p>
             I work with data in two settings. In research, I test trading and market-making ideas with
-            out-of-sample validation and realistic costs, and I write up the ones that fail. At work, I built and
+            trading costs included, and I write up the ones that fail. At work, I built and
             run the customer-service and CRM system for a used-vehicle dealership: database, API, WhatsApp
             assistant, dashboards and deployment.
           </p>
