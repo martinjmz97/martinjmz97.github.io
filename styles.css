@@ -134,7 +134,7 @@ td:first-child { white-space: nowrap; font-weight: 600; }
 .side-title { font: 600 .76rem ui-monospace, Menlo, monospace; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 0 0 12px; }
 
 .portrait { margin: 0; }
-.portrait img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+.portrait img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow); }
 
 .project-grid { display: block; }
 .project-grid .card.wide { }
